@@ -1,0 +1,4158 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"UserDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"bio": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"active",
+							"inactive"
+						]
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"hashedPassword": {
+						"type": "string"
+					},
+					"roleId": {
+						"type": "string"
+					},
+					"permissions": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"userNameUpdated": {
+						"type": "string"
+					},
+					"googleId": {
+						"type": "string"
+					},
+					"facebookId": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"email",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetUsersResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/UserDto"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetUsersByIdResponse": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/UserDto"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UpsertUserResponse": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UpsertUserRequest": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"fullName": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"active",
+							"inactive"
+						]
+					},
+					"roleId": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"fullName",
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"SelectOption": {
+				"properties": {
+					"value": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"value",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"SelectOptionResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/SelectOption"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CategoryDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"categoryParentId": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"active",
+							"inactive"
+						]
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"news",
+							"raovat",
+							"menu"
+						]
+					},
+					"styleShow": {
+						"type": "string",
+						"enum": [
+							"news1",
+							"news2",
+							"news3"
+						]
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"slug": {
+						"type": "string"
+					},
+					"parentCategory": {
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"userNameUpdated": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string",
+								"format": "date-time"
+							}
+						]
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"status",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetCategoriesResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/CategoryDto"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CategoryQuery": {
+				"properties": {
+					"slug": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetCategoryByIdResponse": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/CategoryDto"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UpsertCategoryResponse": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"categoryParentId": {
+						"type": "string"
+					},
+					"categoryParentName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CategoryStatusEnum": {
+				"enum": [
+					"active",
+					"inactive"
+				],
+				"type": "string"
+			},
+			"CategoryTypeEnum": {
+				"enum": [
+					"news",
+					"raovat",
+					"menu"
+				],
+				"type": "string"
+			},
+			"CategoryTypeShowEnum": {
+				"enum": [
+					"news1",
+					"news2",
+					"news3"
+				],
+				"type": "string"
+			},
+			"UpsertCategoryRequest": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"categoryParentId": {
+						"type": "string"
+					},
+					"status": {
+						"$ref": "#/components/schemas/CategoryStatusEnum"
+					},
+					"type": {
+						"$ref": "#/components/schemas/CategoryTypeEnum"
+					},
+					"styleShow": {
+						"anyOf": [
+							{
+								"$ref": "#/components/schemas/CategoryTypeShowEnum"
+							},
+							{
+								"type": "string"
+							}
+						]
+					}
+				},
+				"required": [
+					"name",
+					"status",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"Pick_NewsDto.Exclude_keyofNewsDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy__": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"publishDate": {
+						"anyOf": [
+							{
+								"type": "string",
+								"format": "date-time"
+							},
+							{
+								"type": "string"
+							}
+						]
+					},
+					"userId": {
+						"type": "string"
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"categoryName": {
+						"type": "string"
+					},
+					"categoryStyle": {
+						"type": "string"
+					},
+					"parentCategoryId": {
+						"type": "string"
+					},
+					"parentCategoryName": {
+						"type": "string"
+					},
+					"imageUrl": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"draft",
+							"publish"
+						]
+					},
+					"slug": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"tagIds": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"isHotNews": {
+						"type": "boolean"
+					},
+					"author": {
+						"type": "string"
+					},
+					"userNameUpdated": {
+						"type": "string"
+					},
+					"metaKeyword": {
+						"type": "string"
+					},
+					"view": {
+						"type": "string"
+					},
+					"index": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isPublish": {
+						"type": "boolean"
+					},
+					"customId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit_NewsDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy_": {
+				"$ref": "#/components/schemas/Pick_NewsDto.Exclude_keyofNewsDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"PagedNewsItemDto": {
+				"$ref": "#/components/schemas/Omit_NewsDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy_"
+			},
+			"PagedList_PagedNewsItemDto_": {
+				"properties": {
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/PagedNewsItemDto"
+						},
+						"type": "array"
+					},
+					"totalCount": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"size": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"items",
+					"totalCount",
+					"page",
+					"size"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"NewStatus": {
+				"enum": [
+					"draft",
+					"publish"
+				],
+				"type": "string"
+			},
+			"PaginationQuery": {
+				"properties": {
+					"page": {
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					"size": {
+						"type": "number",
+						"format": "double",
+						"default": 30
+					},
+					"status": {
+						"$ref": "#/components/schemas/NewStatus"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"NewsDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"content": {
+						"type": "string"
+					},
+					"publishDate": {
+						"anyOf": [
+							{
+								"type": "string",
+								"format": "date-time"
+							},
+							{
+								"type": "string"
+							}
+						]
+					},
+					"userId": {
+						"type": "string"
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"categoryName": {
+						"type": "string"
+					},
+					"categoryStyle": {
+						"type": "string"
+					},
+					"parentCategoryId": {
+						"type": "string"
+					},
+					"parentCategoryName": {
+						"type": "string"
+					},
+					"imageUrl": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"draft",
+							"publish"
+						]
+					},
+					"slug": {
+						"type": "string"
+					},
+					"createdBy": {
+						"type": "string"
+					},
+					"updatedBy": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"tagIds": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"isHotNews": {
+						"type": "boolean"
+					},
+					"author": {
+						"type": "string"
+					},
+					"userNameUpdated": {
+						"type": "string"
+					},
+					"metaKeyword": {
+						"type": "string"
+					},
+					"view": {
+						"type": "string"
+					},
+					"index": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isPublish": {
+						"type": "boolean"
+					},
+					"customId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"NewsResponse": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/NewsDto"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"NewsRequest": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"content": {
+						"type": "string"
+					},
+					"publishDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"imageUrl": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"draft",
+							"publish"
+						]
+					},
+					"tagIds": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"isHotNews": {
+						"type": "boolean"
+					},
+					"metaKeyword": {
+						"type": "string"
+					},
+					"view": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"RaoVatDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"content": {
+						"type": "string"
+					},
+					"imageUrl": {
+						"type": "string"
+					},
+					"extraImages": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"rawExtraImagePaths": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"categoryName": {
+						"type": "string"
+					},
+					"publishDate": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string",
+								"format": "date-time"
+							}
+						]
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"createdBy": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"updatedBy": {
+						"type": "string"
+					},
+					"userNameUpdated": {
+						"type": "string"
+					},
+					"slug": {
+						"type": "string"
+					},
+					"facebook": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"contactName": {
+						"type": "string"
+					},
+					"metaKeyword": {
+						"type": "string"
+					},
+					"websiteUrl": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"index": {
+						"type": "number",
+						"format": "double"
+					},
+					"view": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"customId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetRaoVatResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/RaoVatDto"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"RaoVatResponse": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/RaoVatDto"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"RaoVatRequest": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"content": {
+						"type": "string"
+					},
+					"imageUrl": {
+						"type": "string"
+					},
+					"extraImages": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"publishDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"facebook": {
+						"type": "string"
+					},
+					"metaKeyword": {
+						"type": "string"
+					},
+					"contactName": {
+						"type": "string"
+					},
+					"websiteUrl": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"publish",
+							"draft"
+						]
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"MenuDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"order": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"slug": {
+						"type": "string"
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"categoryName": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"createdBy": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"updatedBy": {
+						"type": "string"
+					},
+					"userNameUpdated": {
+						"type": "string"
+					},
+					"childCategories": {
+						"items": {
+							"$ref": "#/components/schemas/CategoryDto"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetMenuResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/MenuDto"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"MenuResponse": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/MenuDto"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"MenuRequest": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"order": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"categoryId": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"ConfigDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"key": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"ConfigResponse": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/ConfigDto"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"ConfigRequest": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"key": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"WebsiteDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"logo": {
+						"type": "string"
+					},
+					"footerContent": {
+						"type": "string"
+					},
+					"facebookUrl": {
+						"type": "string"
+					},
+					"twitterUrl": {
+						"type": "string"
+					},
+					"googleUrl": {
+						"type": "string"
+					},
+					"linkedinUrl": {
+						"type": "string"
+					},
+					"createdBy": {
+						"type": "string"
+					},
+					"updatedBy": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"WebsiteResponse": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/WebsiteDto"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"WebsiteRequest": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"logo": {
+						"type": "string"
+					},
+					"footerContent": {
+						"type": "string"
+					},
+					"facebookUrl": {
+						"type": "string"
+					},
+					"twitterUrl": {
+						"type": "string"
+					},
+					"googleUrl": {
+						"type": "string"
+					},
+					"linkedinUrl": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"HistoryDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"action": {
+						"type": "string"
+					},
+					"userName": {
+						"type": "string"
+					},
+					"entityId": {
+						"type": "string"
+					},
+					"entityName": {
+						"type": "string"
+					},
+					"entityType": {
+						"type": "string"
+					},
+					"createdDate": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"action",
+					"userName",
+					"entityId",
+					"entityName",
+					"entityType",
+					"createdDate"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"TotalCountDto": {
+				"properties": {
+					"totalNews": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalUsers": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalNewsActive": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalNewsInactive": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"totalNews",
+					"totalUsers",
+					"totalNewsActive",
+					"totalNewsInactive"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"DashboardDto": {
+				"properties": {
+					"totalCount": {
+						"$ref": "#/components/schemas/TotalCountDto"
+					},
+					"histories": {
+						"items": {
+							"$ref": "#/components/schemas/HistoryDto"
+						},
+						"type": "array"
+					},
+					"top10OfNews": {
+						"items": {
+							"$ref": "#/components/schemas/PagedNewsItemDto"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"totalCount",
+					"histories",
+					"top10OfNews"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"DashBoardResponse": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/DashboardDto"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"ToTalNewsOfMonthDto": {
+				"properties": {
+					"totalNews": {
+						"type": "number",
+						"format": "double"
+					},
+					"month": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"totalNews",
+					"month"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"TotalNewsOfMonthResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/ToTalNewsOfMonthDto"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"NewsOfMemberDto": {
+				"properties": {
+					"month": {
+						"type": "string"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"totalNews": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalViews": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"month",
+					"totalNews",
+					"totalViews"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetNewsOfMemberResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/NewsOfMemberDto"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"NewsDetailsOfMembersDto": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"slug": {
+						"type": "string"
+					},
+					"view": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"title",
+					"slug",
+					"view"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetNewsDetailsOfMembersResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/NewsDetailsOfMembersDto"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"FileDto": {
+				"properties": {
+					"url": {
+						"type": "string"
+					},
+					"createdAt": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string",
+								"format": "date-time"
+							}
+						]
+					}
+				},
+				"required": [
+					"url",
+					"createdAt"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"AdvertisementPosition": {
+				"type": "string",
+				"enum": [
+					"top",
+					"left",
+					"right"
+				]
+			},
+			"AdvertisementStatus": {
+				"type": "string",
+				"enum": [
+					"active",
+					"inactive"
+				]
+			},
+			"AdvertisementDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"imageUrl": {
+						"type": "string"
+					},
+					"url": {
+						"type": "string"
+					},
+					"order": {
+						"type": "number",
+						"format": "double"
+					},
+					"position": {
+						"$ref": "#/components/schemas/AdvertisementPosition"
+					},
+					"status": {
+						"$ref": "#/components/schemas/AdvertisementStatus"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"userNameUpdated": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"imageUrl",
+					"url",
+					"order",
+					"position",
+					"status",
+					"userId"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"RoleDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"TokenDto": {
+				"properties": {
+					"token": {
+						"type": "string"
+					},
+					"refreshToken": {
+						"type": "string"
+					},
+					"role": {
+						"$ref": "#/components/schemas/RoleDto"
+					},
+					"userInfo": {
+						"$ref": "#/components/schemas/UserDto"
+					}
+				},
+				"required": [
+					"token",
+					"refreshToken"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UserTypeEnum": {
+				"enum": [
+					"admin",
+					"btv",
+					"raovat",
+					"editor"
+				],
+				"type": "string"
+			},
+			"SignUpRequest": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"userType": {
+						"$ref": "#/components/schemas/UserTypeEnum"
+					}
+				},
+				"required": [
+					"email",
+					"password",
+					"name",
+					"userType"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"AccountCredentialsDto": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"isRememberMe": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"email",
+					"password",
+					"isRememberMe"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UserSecretTokenDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"token"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"RefreshTokenRequest": {
+				"properties": {
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"ImageType": {
+				"type": "string",
+				"enum": [
+					"rao-vat",
+					"categories",
+					"website-config"
+				]
+			},
+			"GetNewsesRequest": {
+				"properties": {
+					"page": {
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					"size": {
+						"type": "number",
+						"format": "double",
+						"default": 30
+					},
+					"status": {
+						"$ref": "#/components/schemas/NewStatus"
+					},
+					"style": {
+						"type": "string",
+						"enum": [
+							"news1",
+							"news2",
+							"news3"
+						]
+					},
+					"isHotNews": {
+						"type": "boolean"
+					},
+					"menuSlug": {
+						"type": "string"
+					},
+					"search": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"Pick_RaoVatDto.Exclude_keyofRaoVatDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy__": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"publishDate": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string",
+								"format": "date-time"
+							}
+						]
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"categoryName": {
+						"type": "string"
+					},
+					"imageUrl": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"slug": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"userNameUpdated": {
+						"type": "string"
+					},
+					"metaKeyword": {
+						"type": "string"
+					},
+					"view": {
+						"type": "string"
+					},
+					"index": {
+						"type": "number",
+						"format": "double"
+					},
+					"customId": {
+						"type": "number",
+						"format": "double"
+					},
+					"email": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"extraImages": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"rawExtraImagePaths": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"facebook": {
+						"type": "string"
+					},
+					"contactName": {
+						"type": "string"
+					},
+					"websiteUrl": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit_RaoVatDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy_": {
+				"$ref": "#/components/schemas/Pick_RaoVatDto.Exclude_keyofRaoVatDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"PagedRaoVatItemDto": {
+				"$ref": "#/components/schemas/Omit_RaoVatDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy_"
+			},
+			"PagedList_PagedRaoVatItemDto_": {
+				"properties": {
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/PagedRaoVatItemDto"
+						},
+						"type": "array"
+					},
+					"totalCount": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"size": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"items",
+					"totalCount",
+					"page",
+					"size"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetRaoVatRequest": {
+				"properties": {
+					"page": {
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					"size": {
+						"type": "number",
+						"format": "double",
+						"default": 30
+					},
+					"status": {
+						"$ref": "#/components/schemas/NewStatus"
+					},
+					"categorySlug": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetTagsResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"properties": {
+								"count": {
+									"type": "number",
+									"format": "double"
+								},
+								"name": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"count",
+								"name"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CreateCommentRequest": {
+				"properties": {
+					"newsId": {
+						"type": "string"
+					},
+					"raoVatId": {
+						"type": "string"
+					},
+					"content": {
+						"type": "string"
+					},
+					"anonymousEmail": {
+						"type": "string"
+					},
+					"anonymousName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"content"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"Pick_CommentDto.Exclude_keyofCommentDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy__": {
+				"properties": {
+					"userId": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"avatar": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"userId",
+					"name",
+					"email",
+					"avatar"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit_CommentDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy_": {
+				"$ref": "#/components/schemas/Pick_CommentDto.Exclude_keyofCommentDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"PagedCommentItemDto": {
+				"$ref": "#/components/schemas/Omit_CommentDto.content-or-updateAt-or-updatedBy-or-createdAt-or-createdBy_"
+			},
+			"PagedList_PagedCommentItemDto_": {
+				"properties": {
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/PagedCommentItemDto"
+						},
+						"type": "array"
+					},
+					"totalCount": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"size": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"items",
+					"totalCount",
+					"page",
+					"size"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"GetCommentsRequest": {
+				"properties": {
+					"page": {
+						"type": "number",
+						"format": "double",
+						"default": 1
+					},
+					"size": {
+						"type": "number",
+						"format": "double",
+						"default": 30
+					},
+					"status": {
+						"$ref": "#/components/schemas/NewStatus"
+					},
+					"raoVatId": {
+						"type": "string"
+					},
+					"newsId": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"NewsGroupedByCategoryDto": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"categoryParentId": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"active",
+							"inactive"
+						]
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"news",
+							"raovat",
+							"menu"
+						]
+					},
+					"styleShow": {
+						"type": "string",
+						"enum": [
+							"news1",
+							"news2",
+							"news3"
+						]
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"slug": {
+						"type": "string"
+					},
+					"parentCategory": {
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"userNameUpdated": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "string",
+								"format": "date-time"
+							}
+						]
+					},
+					"newses": {
+						"items": {
+							"$ref": "#/components/schemas/NewsDto"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"status",
+					"type",
+					"newses"
+				],
+				"type": "object",
+				"additionalProperties": true
+			}
+		},
+		"securitySchemes": {
+			"jwt": {
+				"name": "authorization",
+				"type": "apiKey",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "nguoivietplus-api",
+		"version": "0.0.0",
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/admin-console/users": {
+			"get": {
+				"operationId": "GetUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetUsersResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "UpsertUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UpsertUserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpsertUserRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin-console/users/{userId}": {
+			"get": {
+				"operationId": "GetUsersById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetUsersByIdResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteUser",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/team": {
+			"get": {
+				"operationId": "GetTeam",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetUsersResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "UpsertTeam",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UpsertUserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpsertUserRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin-console/team/{userId}": {
+			"get": {
+				"operationId": "GetTeamById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetUsersByIdResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteTeam",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/select/roles": {
+			"get": {
+				"operationId": "GetSelectRoles",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SelectOptionResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/admin-console/select/categories/{type}": {
+			"get": {
+				"operationId": "GetSelectCategories",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SelectOptionResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "type",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/categories/parents": {
+			"get": {
+				"operationId": "GetCategoriesParenst",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetCategoriesResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/admin-console/categories": {
+			"get": {
+				"operationId": "GetCategories",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetCategoriesResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "slug",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "UpsertCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UpsertCategoryResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpsertCategoryRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin-console/categories/{categoryId}": {
+			"get": {
+				"operationId": "GetCategoriesById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetCategoryByIdResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "categoryId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteCategory",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "categoryId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/news": {
+			"get": {
+				"operationId": "GetNews",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PagedList_PagedNewsItemDto_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"schema": {
+							"default": 30,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/NewStatus"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "UpsertNews",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/NewsResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/NewsRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin-console/news/{slug}": {
+			"get": {
+				"operationId": "GetNewsBySlug",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/NewsDto"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "slug",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/news/{newsId}": {
+			"delete": {
+				"operationId": "DeleteNews",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "newsId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/news/{newsId}/change-status": {
+			"put": {
+				"operationId": "ChangeStatusNews",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "newsId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/rao-vat": {
+			"get": {
+				"operationId": "GetRaoVats",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetRaoVatResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "UpsertRaoVat",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RaoVatResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RaoVatRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin-console/rao-vat/{raoVatId}": {
+			"get": {
+				"operationId": "GetRaoVatsById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RaoVatResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "raoVatId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteRaoVat",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "raoVatId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/select/tags": {
+			"get": {
+				"operationId": "GetSelectTags",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SelectOptionResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/admin-console/menus": {
+			"get": {
+				"operationId": "GetMenus",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetMenuResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "UpsertMenu",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MenuResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MenuRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin-console/menus/{menuId}": {
+			"get": {
+				"operationId": "GetMenusById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MenuResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "menuId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteMenu",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "menuId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/configs/{key}": {
+			"get": {
+				"operationId": "GetConfigByKey",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ConfigResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "key",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/configs": {
+			"post": {
+				"operationId": "UpsertConfig",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ConfigResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ConfigRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin-console/website": {
+			"get": {
+				"operationId": "GetWebsite",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/WebsiteResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "UpsertWebsite",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/WebsiteResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/WebsiteRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin-console/histories": {
+			"get": {
+				"operationId": "GetHistories",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/HistoryDto"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/admin-console/dashboard": {
+			"get": {
+				"operationId": "GetDashboard",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DashBoardResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/admin-console/reports/total-news-of-month": {
+			"get": {
+				"operationId": "GetTotalNewsOfMonth",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TotalNewsOfMonthResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/admin-console/reports/news-of-members": {
+			"get": {
+				"operationId": "GetNewsOfMembers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetNewsOfMemberResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/admin-console/reports/news-details-by/{userId}/months/{month}": {
+			"get": {
+				"operationId": "GetNewsDetailsOfMembers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetNewsDetailsOfMembersResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "month",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin-console/image-urls": {
+			"get": {
+				"operationId": "GetAllImageUrl",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"raoVatImages": {
+											"items": {
+												"$ref": "#/components/schemas/FileDto"
+											},
+											"type": "array"
+										},
+										"adImages": {
+											"items": {
+												"$ref": "#/components/schemas/FileDto"
+											},
+											"type": "array"
+										},
+										"categoriesImages": {
+											"items": {
+												"$ref": "#/components/schemas/FileDto"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"raoVatImages",
+										"adImages",
+										"categoriesImages"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/admin-console/remove-images": {
+			"delete": {
+				"operationId": "RemoveImages",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"AdminConsole"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "images",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"/advertisements": {
+			"get": {
+				"operationId": "GetAdvertisements",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/AdvertisementDto"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"schema": {
+							"default": 30,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/NewStatus"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateAdvertisement",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/AdvertisementDto"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"image": {
+										"type": "string",
+										"format": "binary"
+									}
+								},
+								"required": [
+									"image"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/advertisements/{id}": {
+			"get": {
+				"operationId": "GetAdvertisement",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/AdvertisementDto"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateAdvertisement",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/AdvertisementDto"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"image": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteAdvertisement",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/auth/sign-up": {
+			"post": {
+				"operationId": "SignUp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TokenDto"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SignUpRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/sign-in": {
+			"post": {
+				"operationId": "SignIn",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TokenDto"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AccountCredentialsDto"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/sign-in-with-token": {
+			"post": {
+				"operationId": "SignInWithToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"userInfo": {
+											"properties": {
+												"email": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"email",
+												"name",
+												"id"
+											],
+											"type": "object"
+										},
+										"role": {
+											"properties": {
+												"name": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"id"
+											],
+											"type": "object"
+										},
+										"refreshToken": {
+											"type": "string"
+										},
+										"token": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"userInfo",
+										"role",
+										"refreshToken",
+										"token"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserSecretTokenDto"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/refresh": {
+			"post": {
+				"operationId": "Refresh",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"userInfo": {
+											"properties": {
+												"email": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"email",
+												"name",
+												"id"
+											],
+											"type": "object"
+										},
+										"role": {
+											"properties": {
+												"name": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"id"
+											],
+											"type": "object"
+										},
+										"refreshToken": {
+											"type": "string"
+										},
+										"token": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"userInfo",
+										"role",
+										"refreshToken",
+										"token"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RefreshTokenRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/revoke": {
+			"post": {
+				"operationId": "Revoke",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/testing": {
+			"post": {
+				"operationId": "Testing",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"testing"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADS_ADD"
+						]
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/upload": {
+			"post": {
+				"operationId": "UploadFile",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"upload"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"image": {
+										"type": "string",
+										"format": "binary"
+									},
+									"type": {
+										"type": "string"
+									},
+									"oldUrl": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"image",
+									"type"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/upload/{type}": {
+			"post": {
+				"operationId": "UploadFiles",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"upload"
+				],
+				"security": [
+					{
+						"": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "type",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/ImageType"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"images": {
+										"items": {
+											"type": "string",
+											"format": "binary"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"images"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/news": {
+			"get": {
+				"operationId": "GetNews",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PagedList_PagedNewsItemDto_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"schema": {
+							"default": 30,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/NewStatus"
+						}
+					},
+					{
+						"in": "query",
+						"name": "style",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"news1",
+								"news2",
+								"news3"
+							]
+						}
+					},
+					{
+						"in": "query",
+						"name": "isHotNews",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					{
+						"in": "query",
+						"name": "menuSlug",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "search",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/rao-vat": {
+			"get": {
+				"operationId": "GetRaoVats",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PagedList_PagedRaoVatItemDto_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"schema": {
+							"default": 30,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/NewStatus"
+						}
+					},
+					{
+						"in": "query",
+						"name": "categorySlug",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/rao-vat/{slug}": {
+			"get": {
+				"operationId": "GetRaoVatBySlug",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RaoVatDto"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "slug",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/categories": {
+			"get": {
+				"operationId": "GetCategoriesByType",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/CategoryDto"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "type",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"raovat",
+								"menu",
+								"news"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/tags": {
+			"get": {
+				"operationId": "GetTags",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetTagsResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/comments": {
+			"post": {
+				"operationId": "AddComment",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateCommentRequest"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetComments",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PagedList_PagedCommentItemDto_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "size",
+						"required": false,
+						"schema": {
+							"default": 30,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/NewStatus"
+						}
+					},
+					{
+						"in": "query",
+						"name": "raoVatId",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "newsId",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/news/grouped-by-category": {
+			"get": {
+				"operationId": "GetNewsGroupedByCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/NewsGroupedByCategoryDto"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/sitemap": {
+			"get": {
+				"operationId": "GetSitemap",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/ads": {
+			"get": {
+				"operationId": "GetAds",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/AdvertisementDto"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/config": {
+			"get": {
+				"operationId": "GetLinks",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/WebsiteDto"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"website"
+				],
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "http://localhost:3000/api"
+		}
+	]
+}

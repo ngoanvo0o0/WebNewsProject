@@ -1,0 +1,177 @@
+body {
+  @apply min-h-screen bg-white;
+}
+
+header {
+  @apply pb-4
+}
+
+.content-container {
+  min-height: 100vh;
+}
+
+input:focus {
+  @apply outline-indigo-500
+}
+
+button:focus {
+  @apply outline-none;
+}
+
+.swal2-popup {
+  font-size: 14px !important;
+  font-family: 'Inter', sans-serif !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+
+  .swal2-title,
+  .swal2-html-container {
+    margin: 4px 12px !important;
+  }
+}
+
+input[type='checkbox'].tw-checkbox {
+  @apply w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600;
+}
+
+.btn {
+  @apply rounded-md border border-solid;
+
+  padding: 9px 17px;
+  font-size: 14px;
+  min-width: 104px;
+
+  &.btn-primary {
+    @apply inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  }
+
+  &.btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-transparent px-4 py-2 text-sm font-semibold shadow-sm hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+
+    background-color: #E0E7FF;
+    color: #4338CA;
+  }
+
+  &.btn-outline {
+    @apply font-medium text-gray-900 border-gray-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  }
+
+  &.btn-link {
+    border: none !important;
+    min-width: fit-content !important;
+    padding: 0 8px !important;
+
+    @apply outline-none text-gray-700 underline font-medium;
+  }
+}
+
+.approve-btn {
+  @apply inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm min-w-[80px]
+}
+
+.btn-back {
+  @apply font-semibold text-sm text-gray-500 hover:cursor-pointer outline-none flex gap-x-1 items-center mb-3
+}
+
+.line-clamp {
+  line-height: 1.25rem;
+  white-space: initial;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  &-4 {
+    -webkit-line-clamp: 4;
+  }
+}
+
+.error-msg {
+  @apply text-sm mt-2 text-red-500;
+}
+
+
+form {
+  .radio-group {
+    @apply flex flex-row flex-wrap gap-x-6 my-3;
+
+    .radio-item {
+      @apply relative flex items-start;
+
+      .radio-input {
+        @apply flex h-5 items-center;
+      }
+
+      .radio-label {
+        @apply ml-3;
+      }
+    }
+  }
+
+  input:disabled, select:disabled {
+    @apply bg-gray-200 opacity-100 cursor-not-allowed
+  }
+
+  input:focus:not(.m-input-input), select, textarea {
+    @apply outline-indigo-500;
+  }
+
+  .error-msg {
+    @apply text-red-500 mt-2
+  }
+
+  .display-info span {
+    @apply font-semibold text-red-500;
+  }
+
+  .form-group {
+    @apply flex flex-col;
+  }
+
+  .multiselect {
+    @apply mt-1 py-1;
+  }
+
+  input[type='text']:not(.multiselect-tags-search):not(.multiselect-search):not(.m-select-input), input[type='number'], textarea {
+    @apply mt-1 block h-10 rounded-md shadow-sm sm:text-sm w-full px-4 border border-solid border-gray-300;
+  }
+
+  input[type='email'] {
+    @apply block w-full rounded-md border border-solid border-gray-300 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm h-10;
+  }
+
+  input[type='checkbox'], input[type='radio'] {
+    @apply border border-solid border-gray-300 h-4 w-4 rounded shadow-sm sm:text-sm px-4 text-indigo-600 focus:accent-indigo-500 accent-indigo-500;
+  }
+
+  span[aria-disabled='true']  {
+    @apply bg-gray-200 opacity-100 cursor-not-allowed;
+  }
+
+  input[aria-label='Datepicker input'] {
+    @apply border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+  }
+
+  input[placeholder='Select date'] {
+    @apply h-10 mt-1 rounded-md;
+  }
+
+  input[placeholder='Select date'] + svg {
+    margin-top: 3px;
+  }
+
+  input[placeholder='Select date'] + svg + svg {
+    margin-top: 3px;
+  }
+
+  select {
+    @apply mt-1 block w-full rounded-md border border-solid border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm h-10;
+  }
+
+  .btn-submit {
+    @apply inline-flex items-center rounded-md border border-solid border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 justify-center;
+  }
+
+  .btn-cancel {
+    @apply inline-flex items-center rounded-md border border-solid border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 justify-center;
+  }
+}

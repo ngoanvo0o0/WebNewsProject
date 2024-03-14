@@ -1,0 +1,31 @@
+{
+  "entryFile": "src/index.ts",
+  "noImplicitAdditionalProperties": "ignore",
+  "controllerPathGlobs": ["src/apis/**/*api.ts"],
+  "spec": {
+    "basePath": "/api",
+    "host": "localhost:3000",
+    "schemes": ["http", "https"],
+    "outputDirectory": ".",
+    "specVersion": 3,
+    "securityDefinitions": {
+      "jwt": {
+        "name": "authorization",
+        "type": "apiKey",
+        "in": "header"
+      }
+    }
+  },
+  "multerOpts": {
+    "limits": {
+      "fileSize": 5242880
+    }
+  },
+  "routes": {
+    "basePath": "/api",
+    "entryFile": "./src/index.ts",
+    "routesDir": "./src",
+    "middleware": "express",
+    "authenticationModule": "./src/middlewares/auth.ts"
+  }
+}
